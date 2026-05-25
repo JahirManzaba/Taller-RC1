@@ -1,5 +1,17 @@
-// Commit 1: Inicialización y carga de datos con punteros
+// Commit 2: Implementar funcion de estadisticas y los reportes por los estudiantes
 #include <stdio.h>
+
+void calcularEstadisticasEstudiante(float notasEstudiante[], int cantidadNotas, float *promedio, float *max, float *min) {
+    float suma = 0;
+    *max = 0;
+    *min = 10;
+    for(int j = 0; j < cantidadNotas; j++) {
+        suma += notasEstudiante[j];
+        if(notasEstudiante[j] > *max) *max = notasEstudiante[j];
+        if(notasEstudiante[j] < *min) *min = notasEstudiante[j];
+    }
+    *promedio = suma / cantidadNotas;
+}
 
 int main() {
     int n;
@@ -18,6 +30,14 @@ int main() {
                     printf("  Error: La nota debe estar entre 0 y 10.\n");
             } while(notas[i][j] < 0 || notas[i][j] > 10);
         }
+    }
+
+    printf("\n=== REPORTE POR ESTUDIANTE ===\n");
+    float promEstudiante, maxNotaEst, minNotaEst;
+    for(int i = 0; i < n; i++) {
+        calcularEstadisticasEstudiante(notas[i], 3, &promEstudiante, &maxNotaEst, &minNotaEst);
+        printf("Estudiante %d - Promedio: %.2f | Max: %.2f | Min: %.2f\n", 
+                i + 1, promEstudiante, maxNotaEst, minNotaEst);
     }
 
     return 0;
