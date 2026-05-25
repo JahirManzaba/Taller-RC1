@@ -1,4 +1,3 @@
-// Commit 2: Implementar funcion de estadisticas y los reportes por los estudiantes
 #include <stdio.h>
 
 void calcularEstadisticasEstudiante(float notasEstudiante[], int cantidadNotas, float *promedio, float *max, float *min) {
@@ -38,6 +37,30 @@ int main() {
         calcularEstadisticasEstudiante(notas[i], 3, &promEstudiante, &maxNotaEst, &minNotaEst);
         printf("Estudiante %d - Promedio: %.2f | Max: %.2f | Min: %.2f\n", 
                 i + 1, promEstudiante, maxNotaEst, minNotaEst);
+    }
+
+    printf("\n=== REPORTE POR ASIGNATURA ===\n");
+    for(int j = 0; j < 3; j++) {
+        float sumaAsig = 0;
+        float maxNotaAsig = 0;
+        float minNotaAsig = 10;
+        int aprobados = 0, reprobados = 0;
+
+        for(int i = 0; i < n; i++) {
+            sumaAsig += notas[i][j];
+            
+            if(notas[i][j] > maxNotaAsig) maxNotaAsig = notas[i][j];
+            if(notas[i][j] < minNotaAsig) minNotaAsig = notas[i][j];
+            
+            if(notas[i][j] >= 6) aprobados++;
+            else reprobados++;
+        }
+        
+        printf("\nAsignatura %d:\n", j + 1);
+        printf("  Promedio General: %.2f\n", sumaAsig / n);
+        printf("  Calificacion Mas Alta: %.2f\n", maxNotaAsig);
+        printf("  Calificacion Mas Baja: %.2f\n", minNotaAsig);
+        printf("  Aprobados: %d | Reprobados: %d\n", aprobados, reprobados);
     }
 
     return 0;
