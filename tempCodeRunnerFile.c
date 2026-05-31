@@ -1,0 +1,1 @@
+Commit 2: Implementar funcion de estadisticas y los reportes por 
