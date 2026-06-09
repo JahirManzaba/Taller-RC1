@@ -1,6 +1,5 @@
 #include <stdio.h>
-
-
+#include <string.h>
 typedef struct {
     float notasAsignaturas[3];
     float promedio;
@@ -31,6 +30,22 @@ void calcularEstadisticaEstudiante(Alumno *a){
     int main (){
         return 0;
     }
+}
+void calcularEstadisticasEstudiante(Alumno *a) {
+    float suma = 0;
+    a->reporte.max = 0;
+    a->reporte.min = 10;
+    
+    for(int j = 0; j < 3; j++) {
+        suma += a->reporte.notasAsignaturas[j];
+        if(a->reporte.notasAsignaturas[j] > a->reporte.max) {
+            a->reporte.max = a->reporte.notasAsignaturas[j];
+        }
+        if(a->reporte.notasAsignaturas[j] < a->reporte.min) {
+            a->reporte.min = a->reporte.notasAsignaturas[j];
+        }
+    }
+    a->reporte.promedio = suma / 3;
 }
 
 int main() {
