@@ -47,11 +47,12 @@ void calcularEstadisticasEstudiante(Alumno *a) {
     }
     a->reporte.promedio = suma / 3;
 }
-
+void mostrarReporteEstudiante (Alumno *a){
+    printf ("Estudiante %d - Promedio: %.2f | Max: %.2f | Min; %.2f\n", a->id, a->reporte.promedio, a->reporte.max, a->reporte.min);
+    }
+    
 int main() {
-    int n;
-    printf("Ingrese la cantidad de estudiantes: ");
-    scanf("%d", &n);
+    return 0;
 
     float notas[n][3];
 
