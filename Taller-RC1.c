@@ -1,15 +1,36 @@
 #include <stdio.h>
 
-void calcularEstadisticasEstudiante(float notasEstudiante[], int cantidadNotas, float *promedio, float *max, float *min) {
+
+typedef struct {
+    float notasAsignaturas[3];
+    float promedio;
+    float max;
+    float min; 
+} Reporte;
+
+typedef struct {
+    int id;
+    Reporte reporte;
+} Alumno;
+
+void calcularEstadisticaEstudiante(Alumno *a){
     float suma = 0;
-    *max = 0;
-    *min = 10;
-    for(int j = 0; j < cantidadNotas; j++) {
-        suma += notasEstudiante[j];
-        if(notasEstudiante[j] > *max) *max = notasEstudiante[j];
-        if(notasEstudiante[j] < *min) *min = notasEstudiante[j];
+    a ->reporte.max = 0;
+    a ->reporte.min = 10;
+
+    for (int j=0; j<3; j++){
+        suma += a->reporte.notasAsignaturas[j];
+        if(a->reporte.notasAsignaturas[j] > a->reporte.max){
+            a->reporte.max = a->reporte.notasAsignaturas[j];    
+        }
+        if(a->reporte.notasAsignaturas[j] < a-> reporte.min){
+            a->reporte.min = a->reporte.notasAsignaturas[j]; 
+        }
+        a->reporte.promedio = suma/3
     }
-    *promedio = suma / cantidadNotas;
+    int main (){
+        return 0;
+    }
 }
 
 int main() {
